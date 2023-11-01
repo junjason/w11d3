@@ -1,0 +1,27 @@
+const POPULATE = 'produce/POPULATE';
+
+
+export const produceReducer = (state = {}, action) => {
+    let nextState = Object.assign({}, Object.freeze(state));
+
+    switch (action.type) {
+        case POPULATE:
+            action.produce.forEach((produce, i) => {
+                nextState[produce.id] = produce;
+            });
+            return nextState;
+        default:
+            return nextState;
+    }
+}
+
+const allProduce = require("../mockData/produce.json");
+// const action = populateProduce(allProduce);
+// store.dispatch(produceReducer({}, action))
+
+export const populateProduce = () => {
+    return {
+        type: POPULATE,
+        produce: allProduce
+    }
+}
