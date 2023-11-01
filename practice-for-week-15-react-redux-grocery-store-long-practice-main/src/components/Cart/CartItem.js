@@ -16,6 +16,7 @@ function CartItem({ item }) {
   
 
   const handleChangeNumber = (e) => {
+    e.preventDefault();
     // setCount(e.target.value);
     let diff = e.target.value - item.count;
     for (let i =0;i < diff; i++) {
