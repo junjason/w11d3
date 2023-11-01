@@ -1,9 +1,11 @@
 import CartItem from './CartItem';
 import './Cart.css';
+import { useSelector } from 'react-redux';
 
 function Cart() {
-  const cart = {};
-  const produce = {};
+  const cart = useSelector(state=> state.cart);
+  // const cart = {};
+  const produce = useSelector(state=>state.produce);
 
   const cartItems = Object.values(cart)
     .map(item => {
@@ -12,6 +14,8 @@ function Cart() {
         ...produce[item.id]
       };
     });
+
+    // {id: 1 count: 3 }
 
   if (!cartItems || !cartItems.length) return (
     <div className="cart">
