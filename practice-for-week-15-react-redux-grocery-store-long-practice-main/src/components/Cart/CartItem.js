@@ -30,7 +30,11 @@ function CartItem({ item }) {
   }
 
   const decrementCart = (e) => {
+    if (item.count <= 1) {
+      dispatch(removeFromCart(item.id))
+    }else {
     dispatch(decrementInCart(item.id))
+    }
   }
   const removeinCart = (e) => {
     dispatch(removeFromCart(item.id))
